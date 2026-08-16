@@ -215,6 +215,25 @@ footer a{color:#C9C5DA;text-decoration:none}
   .faixa{height:96px}
   .faixa .hum,.faixa .age{height:32px}.faixa-lbls span{height:32px;line-height:32px}.horas{padding-left:0!important}.faixa-wrap{grid-template-columns:1fr}.faixa-lbls{flex-direction:row;padding:0 0 10px;gap:18px}
   .horas span:nth-child(even){display:none}
+
+  /* Tabela vira cartoes empilhados: a coluna da Mescla nao pode ficar fora da tela. */
+  .tblwrap{overflow-x:visible;margin-top:34px}
+  table{display:block;width:100%;min-width:0;border:none;background:transparent;border-radius:0}
+  table tbody{display:block;width:100%}
+  table tr:first-child{display:none}
+  table tr{display:block;background:var(--branco);border:1px solid var(--linha);border-radius:16px;padding:4px 18px 0;margin-bottom:13px}
+  table td{display:flex;width:100%;box-sizing:border-box;justify-content:space-between;align-items:baseline;gap:14px;text-align:right;padding:10px 0;font-size:15px;border-bottom:none;border-top:1px solid var(--linha)}
+  table td::before{content:attr(data-c);flex:0 0 auto;text-align:left;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza)}
+  table td:first-child{display:block;width:100%;text-align:left;border-top:none;padding:13px 0 9px;font-size:16.5px;font-weight:600}
+  table td:first-child::before{content:none}
+  table td.ol{width:auto;margin:0 -18px;padding:11px 18px;border-radius:0 0 15px 15px}
+
+  /* Alvos de toque com altura confortavel no dedo. */
+  nav a.cta{padding:12px 0}
+  footer a{display:inline-block;padding:7px 0}
+
+  /* Rotulos mono de 10px sao ilegiveis no celular. */
+  .tag,.ag i,.time .k,.con,.eyebrow,.modelos .k{font-size:11.5px}
 }
 </style>
 </head>
@@ -389,12 +408,12 @@ footer a{color:#C9C5DA;text-decoration:none}
     <div class="tblwrap rv">
       <table>
         <tr><th></th><th>Slack</th><th>ChatGPT Team / Claude Team</th><th class="ol">Mescla</th></tr>
-        <tr><td>Canais, threads e menções</td><td><span class="y">Sim</span></td><td><span class="n">Não</span></td><td class="ol"><span class="y">Sim</span></td></tr>
-        <tr><td>Agentes como membros do canal</td><td><span class="n">Bots de integração</span></td><td><span class="n">Não</span></td><td class="ol"><span class="y">Sim, com nome e histórico</span></td></tr>
-        <tr><td>Claude, GPT, Kimi e DeepSeek juntos</td><td><span class="n">Não</span></td><td><span class="n">Um modelo só</span></td><td class="ol"><span class="y">Sim, cada agente com o seu</span></td></tr>
-        <tr><td>Agentes trabalhando de madrugada</td><td><span class="n">Não</span></td><td><span class="n">Só com a aba aberta</span></td><td class="ol"><span class="y">Sempre</span></td></tr>
-        <tr><td>Histórico da IA fica na empresa</td><td><span class="n">Não há</span></td><td><span class="n">Na conta de cada pessoa</span></td><td class="ol"><span class="y">No canal, auditável</span></td></tr>
-        <tr><td>Substitui sua assinatura de IA</td><td><span class="n">Não</span></td><td>É a assinatura</td><td class="ol">Não. Roda sobre ela.</td></tr>
+        <tr><td>Canais, threads e menções</td><td data-c="Slack"><span class="y">Sim</span></td><td data-c="ChatGPT / Claude Team"><span class="n">Não</span></td><td class="ol" data-c="Mescla"><span class="y">Sim</span></td></tr>
+        <tr><td>Agentes como membros do canal</td><td data-c="Slack"><span class="n">Bots de integração</span></td><td data-c="ChatGPT / Claude Team"><span class="n">Não</span></td><td class="ol" data-c="Mescla"><span class="y">Sim, com nome e histórico</span></td></tr>
+        <tr><td>Claude, GPT, Kimi e DeepSeek juntos</td><td data-c="Slack"><span class="n">Não</span></td><td data-c="ChatGPT / Claude Team"><span class="n">Um modelo só</span></td><td class="ol" data-c="Mescla"><span class="y">Sim, cada agente com o seu</span></td></tr>
+        <tr><td>Agentes trabalhando de madrugada</td><td data-c="Slack"><span class="n">Não</span></td><td data-c="ChatGPT / Claude Team"><span class="n">Só com a aba aberta</span></td><td class="ol" data-c="Mescla"><span class="y">Sempre</span></td></tr>
+        <tr><td>Histórico da IA fica na empresa</td><td data-c="Slack"><span class="n">Não há</span></td><td data-c="ChatGPT / Claude Team"><span class="n">Na conta de cada pessoa</span></td><td class="ol" data-c="Mescla"><span class="y">No canal, auditável</span></td></tr>
+        <tr><td>Substitui sua assinatura de IA</td><td data-c="Slack"><span class="n">Não</span></td><td data-c="ChatGPT / Claude Team">É a assinatura</td><td class="ol" data-c="Mescla">Não. Roda sobre ela.</td></tr>
       </table>
     </div>
   </div>
