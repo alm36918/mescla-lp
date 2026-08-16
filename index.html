@@ -57,7 +57,16 @@ nav a.cta{font-weight:600;font-size:15px;color:var(--sol);text-decoration:none}
 
 /* HERO */
 .hero{position:relative;background:var(--noite);color:var(--nevoa);overflow:hidden;padding:144px 0 89px;min-height:88vh;display:flex;align-items:center}
-#tear{position:absolute;inset:0;width:100%;height:100%;display:block}
+#tear{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.62}
+/* Veu entre o tear e a tipografia: o tecido continua visivel na borda e do lado
+   direito, mas nao passa por tras do texto. z-index 1 = acima do canvas, abaixo
+   do .wrap (z-index 2). */
+.hero:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(118% 92% at 18% 52%,
+    var(--noite) 0%,
+    rgba(27,25,48,.88) 38%,
+    rgba(27,25,48,.48) 64%,
+    rgba(27,25,48,0) 86%)}
 .hero .wrap{position:relative;z-index:2}
 .hero h1{max-width:min(62vw,860px)}
 @media(max-width:840px){.hero h1{max-width:100%}}
@@ -193,10 +202,12 @@ details p{margin-top:12px;color:var(--cinza);font-size:15.5px;max-width:720px}
 
 /* CTA FINAL */
 .final{text-align:center;position:relative;overflow:hidden}
-.final:before{content:"";position:absolute;inset:0;opacity:.10;pointer-events:none;background:
+/* Mascara invertida: a grade vive na borda e some no centro, onde fica o texto.
+   Antes era o contrario e as linhas cruzavam o titulo. */
+.final:before{content:"";position:absolute;inset:0;opacity:.07;pointer-events:none;background:
   repeating-linear-gradient(90deg,var(--mare) 0 3px,transparent 3px 40px),
   repeating-linear-gradient(0deg,var(--sol) 0 3px,transparent 3px 40px);
-  -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%)}
+  -webkit-mask-image:radial-gradient(ellipse 104% 96% at center,transparent 0 64%,#000 100%);mask-image:radial-gradient(ellipse 104% 96% at center,transparent 0 64%,#000 100%)}
 .final .wrap{position:relative}
 .final .sub{margin:22px auto 36px}
 .pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--sol);color:var(--sol);padding:7px 16px;border-radius:999px;margin-bottom:24px}
