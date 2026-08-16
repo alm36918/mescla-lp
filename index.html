@@ -19,6 +19,7 @@
   --roma:#CF3E27;
   --cinza:#5D5A70;
   --linha:#D5D2E0;
+  --linha-fina:rgba(27,25,48,.08);
   --branco:#FBFAFD;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -152,9 +153,9 @@ nav a.cta{font-weight:600;font-size:15px;color:var(--sol);text-decoration:none}
 /* TABELA */
 .tblwrap{overflow-x:auto;margin-top:55px}
 table{width:100%;border-collapse:collapse;background:var(--branco);border:1px solid var(--linha);border-radius:16px;overflow:hidden;min-width:680px}
-th,td{padding:13px 21px;text-align:left;font-size:15px;border-bottom:1px solid var(--linha)}
+th,td{padding:15px 21px;text-align:left;font-size:15px;border-bottom:1px solid var(--linha-fina)}
 th:first-child,td:first-child{width:38%}
-th{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza);font-weight:500}
+th{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza);font-weight:500;border-bottom-color:var(--linha)}
 th.ol,td.ol{background:#EAF7F4}
 td.ol{font-weight:600}
 tr:last-child td{border-bottom:none}
@@ -216,17 +217,19 @@ footer a{color:#C9C5DA;text-decoration:none}
   .faixa .hum,.faixa .age{height:32px}.faixa-lbls span{height:32px;line-height:32px}.horas{padding-left:0!important}.faixa-wrap{grid-template-columns:1fr}.faixa-lbls{flex-direction:row;padding:0 0 10px;gap:18px}
   .horas span:nth-child(even){display:none}
 
-  /* Tabela vira cartoes empilhados: a coluna da Mescla nao pode ficar fora da tela. */
+  /* Tabela vira cartoes empilhados: a coluna da Mescla nao pode ficar fora da tela.
+     Sem divisorias internas: cada linha e um par rotulo/valor empilhado, separado
+     por respiro. O rotulo em maiuscula ja marca onde uma linha comeca. */
   .tblwrap{overflow-x:visible;margin-top:34px}
   table{display:block;width:100%;min-width:0;border:none;background:transparent;border-radius:0}
   table tbody{display:block;width:100%}
   table tr:first-child{display:none}
   table tr{display:block;background:var(--branco);border:1px solid var(--linha);border-radius:16px;padding:4px 18px 0;margin-bottom:13px}
-  table td{display:flex;width:100%;box-sizing:border-box;justify-content:space-between;align-items:baseline;gap:14px;text-align:right;padding:10px 0;font-size:15px;border-bottom:none;border-top:1px solid var(--linha)}
-  table td::before{content:attr(data-c);flex:0 0 auto;text-align:left;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza)}
-  table td:first-child{display:block;width:100%;text-align:left;border-top:none;padding:13px 0 9px;font-size:16.5px;font-weight:600}
+  table td{display:block;width:100%;box-sizing:border-box;text-align:left;padding:9px 0;font-size:15px;border:none}
+  table td::before{content:attr(data-c);display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza);margin-bottom:1px}
+  table td:first-child{width:100%;padding:14px 0 10px;font-size:16.5px;font-weight:600;line-height:1.35}
   table td:first-child::before{content:none}
-  table td.ol{width:auto;margin:0 -18px;padding:11px 18px;border-radius:0 0 15px 15px}
+  table td.ol{width:auto;margin:6px -18px 0;padding:11px 18px 13px;border-radius:0 0 15px 15px}
 
   /* Alvos de toque com altura confortavel no dedo. */
   nav a.cta{padding:12px 0}
