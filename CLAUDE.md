@@ -5,7 +5,7 @@ Site de uma página só. A fonte da verdade é **`index.html`** na branch `main`
 ## Como o site é publicado
 
 ```
-index.html (GitHub: alm36918/mescla-lp, main)
+index.html (GitHub: neoari/mescla-lp, main)
    ↓ wget no start do container
 container nginx "mescla-lp" na VPS Hostinger
    ↓
