@@ -146,15 +146,16 @@ nav a.cta{font-weight:600;font-size:15px;color:var(--sol);text-decoration:none}
 }
 
 /* BANCADA DE MODELOS — interativa, com profundidade. O visitante troca e ve acontecer. */
-.bancada{perspective:1200px;perspective-origin:50% 0%;display:grid;
-  grid-template-columns:repeat(5,1fr);gap:15px;margin-top:38px}
-.a3{background:linear-gradient(180deg,var(--noite-2),#211E36);border:1px solid #3A3658;
+.bancada{perspective:1300px;display:grid;grid-template-columns:repeat(5,1fr);gap:15px;margin-top:38px}
+/* Repouso plano: o estado padrao tem que parecer certo. A profundidade entra na
+   interacao, nao antes dela. */
+.a3{background:linear-gradient(180deg,var(--noite-2),#1E1B33);border:1px solid #3A3658;
   border-radius:15px;padding:21px 15px 17px;text-align:center;cursor:pointer;
-  transform:rotateX(9deg);transform-origin:50% 100%;
-  transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease,border-color .25s ease;
-  box-shadow:0 10px 26px rgba(0,0,0,.28);position:relative}
-.a3:hover,.a3:focus-visible{transform:rotateX(0deg) translateY(-7px);
-  box-shadow:0 24px 48px rgba(0,0,0,.5);border-color:var(--sol);outline:none}
+  transform:translateY(0) rotateX(0deg);transform-origin:50% 100%;
+  transition:transform .38s cubic-bezier(.2,.7,.3,1),box-shadow .38s ease,border-color .25s ease;
+  box-shadow:0 12px 26px rgba(27,25,48,.16);position:relative}
+.a3:hover,.a3:focus-visible{transform:translateY(-8px) rotateX(6deg);
+  box-shadow:0 26px 46px rgba(27,25,48,.3);border-color:var(--sol);outline:none}
 .a3 .face{width:46px;height:46px;border-radius:14px;margin:0 auto 12px;display:flex;
   align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--noite)}
 .a3 .nm{font-weight:600;font-size:15.5px;color:var(--nevoa);margin-bottom:3px}
@@ -171,11 +172,12 @@ nav a.cta{font-weight:600;font-size:15px;color:var(--sol);text-decoration:none}
   font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#6E6A85;
   opacity:0;transition:opacity .25s ease}
 .a3:hover .toca{opacity:1}
-.contador{display:flex;align-items:baseline;gap:13px;margin-top:34px;flex-wrap:wrap}
+.contador{display:flex;align-items:baseline;gap:14px;margin-top:36px;flex-wrap:wrap}
 .contador b{font-family:'Fraunces',serif;font-variation-settings:'SOFT' 60,'opsz' 144;
-  font-weight:400;font-size:52px;line-height:1;color:var(--sol);
+  font-weight:400;font-size:clamp(44px,6vw,56px);line-height:1;color:#B87A0E;
   font-variant-numeric:tabular-nums;transition:color .3s ease}
-.contador span{font-size:16px;color:#B9B5CB;max-width:34ch;line-height:1.4}
+.contador span{font-size:16.5px;color:var(--cinza);max-width:36ch;line-height:1.45}
+.contador span b{font-family:inherit;font-size:inherit;color:var(--noite);font-weight:600}
 @media(prefers-reduced-motion:reduce){
   .a3{transform:none;transition:none}
   .a3:hover,.a3:focus-visible{transform:none}
@@ -367,11 +369,11 @@ footer a{color:#C9C5DA;text-decoration:none}
   </div>
 </header>
 
-<section class="dark">
+<section>
   <div class="wrap">
     <div class="eyebrow">um espaço, muitos modelos</div>
     <h2>Cada agente com o seu modelo.<br>Troque quando quiser.</h2>
-    <p class="sub">Isso não existe em nenhuma assinatura de IA, porque cada uma vende o modelo dela. Aqui é assim: <b style="color:var(--sol);font-weight:600">clique no modelo de qualquer agente para trocar.</b></p>
+    <p class="sub">Isso não existe em nenhuma assinatura de IA, porque cada uma vende o modelo dela. Aqui é assim: <b style="color:var(--roma);font-weight:600">clique no modelo de qualquer agente para trocar.</b></p>
 
     <div class="bancada rv" id="bancada"></div>
 
