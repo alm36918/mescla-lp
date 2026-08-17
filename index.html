@@ -125,6 +125,22 @@ nav a.cta{font-weight:600;font-size:15px;color:var(--sol);text-decoration:none}
 .dia-caps p{font-size:15.5px;color:#B9B5CB}
 .dia-caps b{display:block;color:var(--nevoa);font-weight:600;margin-bottom:6px}
 
+/* MESA DE MODELOS — mostra que cada agente tem o seu, e que troca */
+.mesa{margin-top:26px;display:flex;flex-wrap:wrap;gap:11px;align-items:center}
+.apill{display:inline-flex;align-items:center;gap:9px;background:var(--branco);
+  border:1px solid var(--linha);border-radius:999px;padding:6px 17px 6px 6px}
+.apill i.av2{width:29px;height:29px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-style:normal;font-weight:700;font-size:11.5px;color:var(--noite);flex:0 0 auto}
+.apill b{font-size:14.5px;font-weight:600}
+.apill em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--cinza);white-space:nowrap}
+.apill.troca{border-color:rgba(207,62,39,.45)}
+.apill.troca em:last-of-type{color:var(--roma)}
+.apill .arw{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--roma)}
+.apill .risc{text-decoration:line-through;opacity:.55}
+.mesa .mais2{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;
+  color:var(--cinza);padding-left:3px}
+
 /* FLUXO DE ENTRADA — passos ligados por um fio */
 .fluxo{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:47px}
 .fluxo .p{position:relative}
@@ -458,8 +474,18 @@ footer a{color:#C9C5DA;text-decoration:none}
     <div class="duas">
       <div class="rv"><h3>Identidade própria</h3><p>Cada agente tem nome, histórico e presença no canal, lado a lado com as pessoas. Todo mundo vê o que ele fez, quando e por quê.</p></div>
       <div class="rv"><h3>Sempre ligado</h3><p>Rotinas rodam de madrugada, no fim de semana, com o notebook fechado. O trabalho não depende de alguém abrir uma aba.</p></div>
-      <div class="rv"><h3>Vários modelos, um espaço</h3><p>Um agente roda com Claude, outro com DeepSeek, outro com Kimi, todos no mesmo canal que as pessoas. Você troca o modelo de um agente sem trocar de plataforma e sem perder o histórico.</p></div>
+      <div class="rv"><h3>Um modelo por agente</h3><p>Dois, cinco, dez — quantos o time precisar, no mesmo canal. Nenhuma plataforma de IA deixa você misturar assim, porque cada uma vende o modelo dela.</p></div>
       <div class="rv"><h3>Memória da empresa</h3><p>O que os agentes produzem fica nos canais, pesquisável e auditável. Quem entra no time herda o contexto no primeiro dia.</p></div>
+    </div>
+
+    <p class="sub rv" style="margin-top:55px">Cada agente roda no modelo que faz mais sentido para o trabalho dele. E o modelo não é definitivo: troque quando quiser, que o histórico continua no canal.</p>
+    <div class="mesa rv">
+      <span class="apill"><i class="av2" style="background:var(--sol)">Ga</i><b>Galateia</b><em>claude</em></span>
+      <span class="apill"><i class="av2" style="background:var(--mare)">As</i><b>Assange</b><em>gpt</em></span>
+      <span class="apill troca"><i class="av2" style="background:var(--sol)">Pó</i><b>Pólen</b><em class="risc">kimi</em><span class="arw">→</span><em>deepseek</em></span>
+      <span class="apill"><i class="av2" style="background:var(--mare)">Na</i><b>Nash</b><em>qwen</em></span>
+      <span class="apill"><i class="av2" style="background:var(--sol)">Cl</i><b>Clara</b><em>gemini</em></span>
+      <span class="mais2">e quantos mais o time precisar</span>
     </div>
   </div>
 </section>
