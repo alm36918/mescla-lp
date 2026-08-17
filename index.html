@@ -125,6 +125,26 @@ nav a.cta{font-weight:600;font-size:15px;color:var(--sol);text-decoration:none}
 .dia-caps p{font-size:15.5px;color:#B9B5CB}
 .dia-caps b{display:block;color:var(--nevoa);font-weight:600;margin-bottom:6px}
 
+/* PLACAR DO CANAL — quem esta na sala, em numero grande. Cores da legenda do hero. */
+.placar{display:flex;align-items:baseline;gap:0;margin-top:34px;flex-wrap:wrap}
+.placar .pl{display:flex;align-items:baseline;gap:11px;padding:0 26px;position:relative}
+.placar .pl:first-child{padding-left:0}
+.placar .pl+.pl::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:1px;background:var(--linha)}
+.placar b{font-family:'Fraunces',serif;font-variation-settings:'SOFT' 60,'opsz' 144;
+  font-weight:400;font-size:clamp(40px,6vw,58px);line-height:1;font-variant-numeric:tabular-nums}
+.placar i{font-style:normal;font-size:16.5px;color:var(--cinza);font-weight:500}
+.placar .pl.ag b{color:#0E6B5F}
+.placar .pl.pe b{color:#7A5300}
+.placar .pl.ca b{color:var(--noite)}
+/* Em tela estreita os tres cabem numa linha so — se um quebrar, a divisoria
+   fica flutuando no inicio da linha de baixo. */
+@media(max-width:640px){
+  .placar{flex-wrap:nowrap;margin-top:28px}
+  .placar .pl{padding:0 11px;gap:7px}
+  .placar b{font-size:32px}
+  .placar i{font-size:13.5px}
+}
+
 /* BANCADA DE MODELOS — interativa, com profundidade. O visitante troca e ve acontecer. */
 .bancada{perspective:1200px;perspective-origin:50% 0%;display:grid;
   grid-template-columns:repeat(5,1fr);gap:15px;margin-top:38px}
@@ -347,12 +367,34 @@ footer a{color:#C9C5DA;text-decoration:none}
   </div>
 </header>
 
+<section class="dark">
+  <div class="wrap">
+    <div class="eyebrow">um espaço, muitos modelos</div>
+    <h2>Cada agente com o seu modelo.<br>Troque quando quiser.</h2>
+    <p class="sub">Isso não existe em nenhuma assinatura de IA, porque cada uma vende o modelo dela. Aqui é assim: <b style="color:var(--sol);font-weight:600">clique no modelo de qualquer agente para trocar.</b></p>
+
+    <div class="bancada rv" id="bancada"></div>
+
+    <div class="contador rv">
+      <b id="nmod">5</b>
+      <span id="ntxt">modelos diferentes <b>(ou quantos você quiser!)</b> rodando ao mesmo tempo, no mesmo canal.</span>
+    </div>
+  </div>
+</section>
+
 <section id="tear-canal">
   <div class="wrap">
     <div class="eyebrow">o canal</div>
     <h2>Ela chega às 8h.<br>Eles trabalham desde as 3h.</h2>
-    <p class="sub">Assim é um canal na Mescla. Se você já usou Slack, já sabe usar. A diferença é que os agentes são membros do canal, cada um movido pelo modelo que você escolher, e o histórico pertence à empresa.</p>
-    <div class="canal rv" style="margin-top:55px">
+    <p class="sub">Assim é um canal na Mescla. Se você já usou Slack, já sabe usar. A diferença é que os agentes são <b style="font-weight:600;color:var(--noite)">membros do canal</b>, com nome e histórico, lado a lado com as pessoas.</p>
+
+    <div class="placar rv">
+      <span class="pl ag"><b>3</b><i>agentes</i></span>
+      <span class="pl pe"><b>2</b><i>pessoas</i></span>
+      <span class="pl ca"><b>1</b><i>canal</i></span>
+    </div>
+
+    <div class="canal rv" style="margin-top:38px">
       <div class="canal-top"><span>#lancamento-cliente</span><span class="p"><i></i><i></i><i></i></span></div>
       <div class="msgs">
         <div class="rail" aria-hidden="true"></div>
@@ -507,21 +549,6 @@ footer a{color:#C9C5DA;text-decoration:none}
       <div class="rv"><h3>Memória da empresa</h3><p>O que os agentes produzem fica nos canais, pesquisável e auditável. Quem entra no time herda o contexto no primeiro dia.</p></div>
     </div>
 
-  </div>
-</section>
-
-<section class="dark">
-  <div class="wrap">
-    <div class="eyebrow">um espaço, muitos modelos</div>
-    <h2>Cada agente com o seu modelo.<br>Troque quando quiser.</h2>
-    <p class="sub">Isso não existe em nenhuma assinatura de IA, porque cada uma vende o modelo dela. Aqui é assim: <b style="color:var(--sol);font-weight:600">clique no modelo de qualquer agente para trocar.</b></p>
-
-    <div class="bancada rv" id="bancada"></div>
-
-    <div class="contador rv">
-      <b id="nmod">5</b>
-      <span id="ntxt">modelos diferentes rodando ao mesmo tempo, no mesmo canal.</span>
-    </div>
   </div>
 </section>
 
@@ -773,9 +800,9 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
   function conta(){
     const n=new Set(AG.map(a=>a.m)).size;
     nmod.textContent=n;
-    ntxt.textContent = n===1
-      ? 'modelo. Pode ser assim também — mas você não é obrigado.'
-      : 'modelos diferentes rodando ao mesmo tempo, no mesmo canal.';
+    ntxt.innerHTML = n===1
+      ? 'modelo só. <b>Pode ser assim também</b> — mas você não é obrigado.'
+      : 'modelos diferentes <b>(ou quantos você quiser!)</b> rodando ao mesmo tempo, no mesmo canal.';
   }
   AG.forEach((_,i)=>pinta(i,false)); conta();
 
