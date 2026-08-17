@@ -125,6 +125,22 @@ nav a.cta{font-weight:600;font-size:15px;color:var(--sol);text-decoration:none}
 .dia-caps p{font-size:15.5px;color:#B9B5CB}
 .dia-caps b{display:block;color:var(--nevoa);font-weight:600;margin-bottom:6px}
 
+/* FLUXO DE ENTRADA — passos ligados por um fio */
+.fluxo{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:47px}
+.fluxo .p{position:relative}
+/* O fio liga um passo ao seguinte e para no ultimo — linha unica vazaria alem dele. */
+.fluxo .p:not(:last-child)::after{content:"";position:absolute;top:18px;left:45px;right:-33px;height:2px;border-radius:2px;opacity:.45}
+.fluxo .p:nth-child(1)::after{background:linear-gradient(90deg,var(--sol),#CDB77B)}
+.fluxo .p:nth-child(2)::after{background:linear-gradient(90deg,#CDB77B,#A0CBB6)}
+.fluxo .p:nth-child(3)::after{background:linear-gradient(90deg,#A0CBB6,var(--mare))}
+.fluxo .n{position:relative;z-index:1;width:38px;height:38px;border-radius:50%;
+  background:var(--noite);border:2px solid var(--sol);color:var(--sol);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;margin-bottom:17px}
+.fluxo h3{font-size:17px;margin-bottom:7px;color:var(--nevoa)}
+.fluxo p{font-size:14.5px;color:#B9B5CB;line-height:1.5}
+.fluxo .u{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mare);display:block;margin-top:7px}
+
 /* GRIDS */
 .tres{display:grid;grid-template-columns:repeat(3,1fr);gap:21px;margin-top:55px}
 .card{background:var(--branco);border:1px solid var(--linha);border-radius:13px;padding:34px}
@@ -227,6 +243,16 @@ footer a{color:#C9C5DA;text-decoration:none}
   .faixa{height:96px}
   .faixa .hum,.faixa .age{height:32px}.faixa-lbls span{height:32px;line-height:32px}.horas{padding-left:0!important}.faixa-wrap{grid-template-columns:1fr}.faixa-lbls{flex-direction:row;padding:0 0 10px;gap:18px}
   .horas span:nth-child(even){display:none}
+
+  /* Fluxo de entrada: o fio vira vertical e os passos empilham. */
+  .fluxo{grid-template-columns:1fr;gap:0;margin-top:34px}
+  .fluxo .p{padding-left:58px;padding-bottom:28px}
+  .fluxo .p:last-child{padding-bottom:0}
+  .fluxo .n{position:absolute;left:0;top:0;margin-bottom:0}
+  .fluxo .p:not(:last-child)::after{top:45px;bottom:-7px;left:18px;right:auto;width:2px;height:auto}
+  .fluxo .p:nth-child(1)::after{background:linear-gradient(180deg,var(--sol),#CDB77B)}
+  .fluxo .p:nth-child(2)::after{background:linear-gradient(180deg,#CDB77B,#A0CBB6)}
+  .fluxo .p:nth-child(3)::after{background:linear-gradient(180deg,#A0CBB6,var(--mare))}
 
   /* Tabela vira cartoes empilhados: a coluna da Mescla nao pode ficar fora da tela.
      Sem divisorias internas: cada linha e um par rotulo/valor empilhado, separado
@@ -397,6 +423,30 @@ footer a{color:#C9C5DA;text-decoration:none}
       <div class="card rv" style="background:var(--noite-2);border-color:#3A3658;color:var(--nevoa)"><span class="k" style="color:var(--sol)">1 · o espaço</span><h3>Você recebe o endereço pronto</h3><p style="color:#B9B5CB">Servidor, canais e estrutura montados. Você baixa o aplicativo e entra. Nada de Docker, nada de linha de comando.</p></div>
       <div class="card rv" style="background:var(--noite-2);border-color:#3A3658;color:var(--nevoa)"><span class="k" style="color:var(--sol)">2 · a inteligência</span><h3>Conecta o que já usa</h3><p style="color:#B9B5CB">A assinatura de IA que o time já paga, e as ferramentas de cada time: Drive, Meta Ads, Gmail. Um clique onde dá, uma chave onde não dá. Ou arraste o arquivo no canal e pule.</p></div>
       <div class="card rv" style="background:var(--noite-2);border-color:#3A3658;color:var(--nevoa)"><span class="k" style="color:var(--sol)">3 · os times</span><h3>Escolhe dois times prontos e entra</h3><p style="color:#B9B5CB">Conteúdo, Tráfego, Financeiro, Atendimento ou Comercial. Cada um já vem com agentes, canal e rotina. Na primeira manhã, tem trabalho esperando.</p></div>
+    </div>
+
+    <p class="sub rv" style="margin-top:55px">E entrar é assim, para cada pessoa do time:</p>
+    <div class="fluxo rv">
+      <div class="p">
+        <div class="n">01</div>
+        <h3>Você escolhe o endereço</h3>
+        <p>O espaço do seu time nasce num endereço só seu.<span class="u">seutime.mescla.ai</span></p>
+      </div>
+      <div class="p">
+        <div class="n">02</div>
+        <h3>Convida pelo WhatsApp</h3>
+        <p>Um link, enviado por onde o time já conversa. O mesmo link serve para todo mundo.</p>
+      </div>
+      <div class="p">
+        <div class="n">03</div>
+        <h3>Cada pessoa clica e entra</h3>
+        <p>Instala o aplicativo e cai direto no espaço certo. Sem endereço para digitar, sem senha para inventar, sem configuração.</p>
+      </div>
+      <div class="p">
+        <div class="n">04</div>
+        <h3>O time já está montado</h3>
+        <p>Canais, agentes e rotina no lugar. Ninguém começa numa tela vazia.</p>
+      </div>
     </div>
   </div>
 </section>
